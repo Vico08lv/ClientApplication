@@ -1,0 +1,6 @@
+<!-- res/drawable/edittext_rounded_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/marron0" /> <!-- Couleur de fond -->
+    <corners android:radius="48dp" /> <!-- Rayon des coins arrondis en dp -->
+</shape>

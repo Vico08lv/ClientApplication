@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "692240711977",
+    "project_id": "apicommerce2",
+    "storage_bucket": "apicommerce2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692240711977:android:8daf9e6390f7d6af323738",
+        "android_client_info": {
+          "package_name": "com.example.clientapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD98KppAD6d9z-5Lb_sxtMNhxJJQ5w6uAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692240711977:android:49ad058cd6014e73323738",
+        "android_client_info": {
+          "package_name": "com.example.producteurapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD98KppAD6d9z-5Lb_sxtMNhxJJQ5w6uAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

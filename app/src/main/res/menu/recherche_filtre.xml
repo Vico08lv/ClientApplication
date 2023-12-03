@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/rFiltre1"
+        android:title="Légume" />
+    <item android:id="@+id/rFiltre2"
+        android:title="Fruit" />
+    <item android:id="@+id/rFiltre3"
+        android:title="Viande" />
+    <item android:id="@+id/rFiltre4"
+        android:title="Poisson" />
+    <item android:id="@+id/rFiltre5"
+        android:title="Miel" />
+    <item android:id="@+id/rFiltre6"
+        android:title="Autre" />
+</menu>
