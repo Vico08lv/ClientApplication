@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -45,12 +46,25 @@ class CartFragment : Fragment() {
         /** MAJ liste commandes **/
         appViewModel.panier.observe(viewLifecycleOwner, Observer { panier ->
             panier?.let {
+                Log.d("CartFragment", "Nombre d'éléments dans le panier : ${panier.size}")
                 adapter.updatePanier(panier)
             }
         })
 
         val panier = appViewModel.getPanier()
         Log.i("Cart","$panier")
+
+
+        val toutCommanderButton = root.findViewById<Button>(R.id.tout_commander)
+
+        toutCommanderButton.setOnClickListener {
+            val panier = appViewModel.getPanier()
+            panier?.forEach { commande ->
+                Log.i("Commande","$commande")
+                appViewModel.postCommande(commande)
+            }
+            appViewModel.clearPanier()
+        }
 
         return root
     }

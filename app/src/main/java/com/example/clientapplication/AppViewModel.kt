@@ -71,6 +71,30 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         return _panier.value
     }
 
+    fun clearPanier(){
+        _panier.value = emptyList()
+    }
+
+    fun addToCart(produit: ProduitQuantiteRequest) {
+        val currentPanier = _panier.value?.toMutableList() ?: mutableListOf()
+
+        val user_id = store.retrieveFromPreferences("email","")
+
+        val newCommande = CommandeRequest(
+            id = 0,
+            status = StatusCommande.EN_ATTENTE_DE_VALIDATION,
+            cliend_id = user_id,
+            produits = mutableListOf(produit),
+            date = Date()
+        )
+
+        currentPanier.add(newCommande)
+        updatePanier(currentPanier)
+    }
+
+
+
+
 
 
 
@@ -166,6 +190,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun postCommande(commandeRequest: CommandeRequest){
         viewModelScope.launch {
             try {
+                var commandeRequestSend = commandeRequest
+                commandeRequestSend.cliend_id = store.retrieveFromPreferences("email","")
                 val response = apiService.passerCommande(commandeRequest)
                 Log.d("POST::/api/client/commander", response.toString())
                 getCommandes()
@@ -178,10 +204,6 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun addToCart(produitQuantite: ProduitQuantiteRequest, emailProducteur: String) {
-        store.addToCart(produitQuantite,emailProducteur)
-        Log.i("PanierAVM","$produitQuantite $emailProducteur")
-    }
 
     /** AU CHARGEMENT DE L'ACTIVITE **/
     init {

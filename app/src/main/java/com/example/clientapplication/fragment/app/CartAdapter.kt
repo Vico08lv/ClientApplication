@@ -2,6 +2,7 @@ package com.example.clientapplication.fragment.app
 
 import android.app.Dialog
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,6 +48,7 @@ class CartAdapter(
         }
 
         holder.panier_produit_info.text = produitsText.toString()
+
     }
 
 
@@ -58,7 +60,7 @@ class CartAdapter(
     }
 
     override fun getItemCount(): Int {
-        return 0
+        return panier.size
     }
 
 

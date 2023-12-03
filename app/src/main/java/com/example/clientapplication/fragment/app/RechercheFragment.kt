@@ -56,9 +56,6 @@ class RechercheFragment : Fragment() {
         adapter = ProduitAdapter(emptyList(),requireContext(),appViewModel)
         productRecyclerView.adapter = adapter
 
-        fun onAddToCartClicked(produitQuantite: ProduitQuantiteRequest, emailProducteur: String) {
-            appViewModel.addToCart(produitQuantite, emailProducteur)
-        }
 
         /** MAJ liste produits **/
         appViewModel.produits.observe(viewLifecycleOwner, Observer { produits ->

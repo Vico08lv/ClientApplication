@@ -104,7 +104,8 @@ class ProduitAdapter(
             )
 
             // Appelle la fonction de l'interface pour gérer l'ajout au panier
-            product.emailProducteur?.let { it1 -> appViewModel.addToCart(produitQuantite, it1) }
+            product.emailProducteur?.let { it1 -> appViewModel.addToCart(produitQuantite) }
+//            product.emailProducteur?.let { it1 -> appViewModel.addToCart(produitQuantite, it1) }
 
         }
 

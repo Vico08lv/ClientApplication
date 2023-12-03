@@ -68,73 +68,12 @@ class Storage(private val context: Context) {
         )
     }
 
-    // Ajouter un produit au panier
-    fun addToCart(produit: ProduitQuantiteRequest, producteur: String) {
-        val gson = Gson()
-        val jsonProduits = retrieveFromPreferences("panier", "")
-        val commandes: MutableMap<String, MutableList<CommandeRequest>> = gson.fromJson(
-            jsonProduits,
-            object : TypeToken<MutableMap<String, MutableList<CommandeRequest>>>() {}.type
-        ) ?: mutableMapOf()
-
-        val commandeProducteur = commandes[producteur]
-
-        if (commandeProducteur != null) {
-            // Recherchez une commande existante pour ce producteur et ajoutez le produit si trouvé
-            val existingCommande = commandeProducteur.firstOrNull()
-            val existingProduct = existingCommande?.produits?.find { it.id == produit.id }
-
-            if (existingProduct != null) {
-                existingProduct.quantite = (existingProduct.quantite ?: 0) + (produit.quantite ?: 0)
-            } else {
-                existingCommande?.produits = existingCommande?.produits?.toMutableList()
-                (existingCommande?.produits as MutableList<ProduitQuantiteRequest>?)?.add(produit)
-            }
-        } else {
-            // Si aucune commande pour ce producteur n'existe, créez une nouvelle commande
-            val newCommande = CommandeRequest(
-                id = 0,
-                status = StatusCommande.EN_ATTENTE_DE_VALIDATION,
-                cliend_id = getUserId(),
-                produits = mutableListOf(produit),
-                date = Date()
-            )
-            commandes[producteur] = mutableListOf(newCommande)
-        }
-
-        val jsonUpdatedPanier = gson.toJson(commandes)
-        saveToPreferences("panier", jsonUpdatedPanier)
-
-
-        Log.d("Panier", "Objets du panier après ajout : $jsonUpdatedPanier")
-    }
-
-
-
 
     private fun getUserId(): String {
         val storage = Storage(context) // Remplacez 'context' par votre contexte actuel
         return storage.getProfil().email ?: ""
     }
 
-
-
-    // Obtenir les produits du panier
-    fun getCart(): List<ProduitQuantiteResponse> {
-        val gson = Gson()
-        val jsonProduits = retrieveFromPreferences("panier", "")
-        return gson.fromJson(jsonProduits, object : TypeToken<List<ProduitQuantiteResponse>>() {}.type)
-            ?: emptyList()
-    }
-
-
-
-
-
-    // Vider le panier
-    fun clearCart() {
-        saveToPreferences("panier", "")
-    }
 
 
 }
