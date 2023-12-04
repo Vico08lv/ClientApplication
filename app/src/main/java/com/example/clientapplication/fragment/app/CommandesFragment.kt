@@ -1,6 +1,7 @@
 package com.example.clientapplication.fragment.app
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,8 @@ class CommandesFragment : Fragment() {
     ): View {
 
         appViewModel = ViewModelProvider(requireActivity())[AppViewModel::class.java]
+        appViewModel.getCommandes()
+
 
         _binding = FragmentCommandesBinding.inflate(inflater, container, false)
         val root: View = binding.root
