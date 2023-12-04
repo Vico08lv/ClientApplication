@@ -31,7 +31,6 @@ class RechercheFragment : Fragment() {
     private lateinit var appViewModel : AppViewModel
     lateinit var adapter : ProduitAdapter
 
-    private lateinit var listeProduit : List<String>
 
 
     override fun onCreateView(
@@ -44,6 +43,7 @@ class RechercheFragment : Fragment() {
 //        val rootView = inflater.inflate(R.layout.fragment_recherche, container, false)
 
         appViewModel = ViewModelProvider(requireActivity())[AppViewModel::class.java]
+        appViewModel.getAllProduits()
 
         //lier le fragment
         _binding = FragmentRechercheBinding.inflate(inflater, container, false)
