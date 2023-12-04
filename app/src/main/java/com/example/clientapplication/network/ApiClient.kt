@@ -11,7 +11,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 class ApiClient(private val context: Context) {
-    private val BASE_URL = "https://b3e7-2a01-cb1d-8142-ef00-4945-5ee-df49-603a.ngrok-free.app"
+    private val BASE_URL = "https://31a3-92-184-100-216.ngrok-free.app/"
 
 
     private val retrofit: Retrofit by lazy {

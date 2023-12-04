@@ -51,17 +51,14 @@ class CartFragment : Fragment() {
             }
         })
 
-        val panier = appViewModel.getPanier()
-        Log.i("Cart","$panier")
-
 
         val toutCommanderButton = root.findViewById<Button>(R.id.tout_commander)
 
         toutCommanderButton.setOnClickListener {
             val panier = appViewModel.getPanier()
             panier?.forEach { commande ->
-                Log.i("Commande","$commande")
-                appViewModel.postCommande(commande)
+                val commandeRequest = commande
+                appViewModel.postCommande(commandeRequest)
             }
             appViewModel.clearPanier()
         }

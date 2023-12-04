@@ -40,9 +40,6 @@ class RechercheFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-//        val rechercheViewModel = ViewModelProvider(this).get(RechercheViewModel::class.java)
-//        val rootView = inflater.inflate(R.layout.fragment_recherche, container, false)
-
         appViewModel = ViewModelProvider(requireActivity())[AppViewModel::class.java]
 
         //lier le fragment

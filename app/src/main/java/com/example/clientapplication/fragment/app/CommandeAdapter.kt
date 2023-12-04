@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.clientapplication.AppViewModel
 import com.example.clientapplication.R
 import com.example.clientapplication.model.StatusCommande
 import com.example.clientapplication.model.response.CommandeResponse

@@ -5,26 +5,16 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.example.clientapplication.localStorage.Storage
-import com.example.clientapplication.model.StatusCommande
-import com.example.clientapplication.model.StatusProduitQuantite
-import com.example.clientapplication.model.request.AuthenticationRequest
 import com.example.clientapplication.model.request.ClientRequest
 import com.example.clientapplication.model.request.CommandeRequest
 import com.example.clientapplication.model.request.ProduitQuantiteRequest
 import com.example.clientapplication.model.response.ClientResponse
-import com.example.clientapplication.model.response.CommandeResponse
 import com.example.clientapplication.model.response.CommandesResponse
-import com.example.clientapplication.model.response.ProduitQuantiteResponse
 import com.example.clientapplication.model.response.ProduitResponse
 import com.example.clientapplication.network.ApiClient
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import java.util.Random
 
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {
@@ -78,14 +68,12 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun addToCart(produit: ProduitQuantiteRequest) {
         val currentPanier = _panier.value?.toMutableList() ?: mutableListOf()
 
-        val user_id = store.retrieveFromPreferences("email","")
-
         val newCommande = CommandeRequest(
-            id = 0,
-            status = StatusCommande.EN_ATTENTE_DE_VALIDATION,
-            cliend_id = user_id,
+//            id = 0,
+//            status = StatusCommande.EN_ATTENTE_DE_VALIDATION,
+//            cliend_id = user_id,
             produits = mutableListOf(produit),
-            date = Date()
+//            date = Date()
         )
 
         currentPanier.add(newCommande)
@@ -109,11 +97,12 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             try {
                 val response = apiService.afficherCommandes()
-                response.commandes?.let { commandesList ->
-                    val commandesResponse = CommandesResponse(commandes = commandesList)
-                    updateCommandes(commandesResponse)
-                }
+//                response.commandes?.let { commandesList ->
+//                    val commandesResponse = CommandesResponse(commandes = commandesList)
+//                    updateCommandes(commandesResponse)
+                updateCommandes(response)
                 Log.d("GET:/api/client/commandes", response.toString())
+
             } catch (e: Exception) {
                 Log.e("GET:/api/client/commandes", e.message.toString())
                 store.clear()
@@ -129,9 +118,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                 val response = apiService.profilClient()
                 updateProfil(response)
                 store.saveProfil(response)
-                Log.d("GET::/api/client/profil", response.toString())
+                Log.d("GET:/api/client/profil", response.toString())
             } catch (e: Exception) {
-                Log.e("GET::/api/client/profil", e.message.toString())
+                Log.e("GET:/api/client/profil", e.message.toString())
                 store.clear()
                 _navigationEvent.value = NavigationEvent.LaunchNewActivity
             }
@@ -189,9 +178,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     /** PASSER UNE COMMANDE **/
     fun postCommande(commandeRequest: CommandeRequest){
         viewModelScope.launch {
+            Log.d("commande","--> $commandeRequest")
             try {
-                var commandeRequestSend = commandeRequest
-                commandeRequestSend.cliend_id = store.retrieveFromPreferences("email","")
                 val response = apiService.passerCommande(commandeRequest)
                 Log.d("POST::/api/client/commander", response.toString())
                 getCommandes()

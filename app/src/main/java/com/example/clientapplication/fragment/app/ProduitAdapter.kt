@@ -100,11 +100,10 @@ class ProduitAdapter(
             val produitQuantite = ProduitQuantiteRequest(
                 id = product.id,
                 quantite = quantity,
-                statusProduitQuantite = StatusProduitQuantite.ACCEPT
             )
 
             // Appelle la fonction de l'interface pour gérer l'ajout au panier
-            product.emailProducteur?.let { it1 -> appViewModel.addToCart(produitQuantite) }
+            appViewModel.addToCart(produitQuantite)
 //            product.emailProducteur?.let { it1 -> appViewModel.addToCart(produitQuantite, it1) }
 
         }
