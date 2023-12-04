@@ -61,11 +61,16 @@ class CartFragment : Fragment() {
         toutCommanderButton.setOnClickListener {
             val panier = appViewModel.getPanier()
 
-            val send: List<ProduitQuantiteRequest> = listOf()
+            Log.i("panier","$panier")
+
+            var send: List<ProduitQuantiteRequest> = mutableListOf()
 
             panier?.forEach { element->
-                send.plus(element.produits)
+                Log.i("panier","$element")
+                send += (element.produits)
             }
+
+            Log.i("panier2","$send")
             appViewModel.postCommande(CommandeRequest(send))
 
 //            panier?.forEach { commande ->
