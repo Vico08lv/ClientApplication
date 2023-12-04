@@ -21,7 +21,7 @@ interface ApiService {
     suspend fun afficherCommandes() : CommandesResponse
     @GET("/api/produit/categorie/{categorie}")
     suspend fun rechercherProduits() : ProduitsResponse
-    @GET("/api/produit/all")
+    @GET("/api/client/produit/all")
     suspend fun rechercherProduitsAll() : ProduitsResponse
     @GET("/api/client/profil")
     suspend fun profilClient() : ClientResponse

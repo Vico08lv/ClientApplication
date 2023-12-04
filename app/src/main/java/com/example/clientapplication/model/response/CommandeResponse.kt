@@ -9,5 +9,5 @@ data class CommandeResponse(
     val status: StatusCommande?,
     val client_id: String?,
     val produits: List<ProduitQuantiteResponse>?,
-    val date: Date?,
+    val date: String?
 )

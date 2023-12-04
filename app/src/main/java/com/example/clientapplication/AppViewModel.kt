@@ -5,26 +5,18 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.example.clientapplication.localStorage.Storage
 import com.example.clientapplication.model.StatusCommande
-import com.example.clientapplication.model.StatusProduitQuantite
-import com.example.clientapplication.model.request.AuthenticationRequest
 import com.example.clientapplication.model.request.ClientRequest
 import com.example.clientapplication.model.request.CommandeRequest
 import com.example.clientapplication.model.request.ProduitQuantiteRequest
 import com.example.clientapplication.model.response.ClientResponse
-import com.example.clientapplication.model.response.CommandeResponse
 import com.example.clientapplication.model.response.CommandesResponse
-import com.example.clientapplication.model.response.ProduitQuantiteResponse
 import com.example.clientapplication.model.response.ProduitResponse
 import com.example.clientapplication.network.ApiClient
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
-import java.util.Random
 
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {
@@ -81,11 +73,11 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         val user_id = store.retrieveFromPreferences("email","")
 
         val newCommande = CommandeRequest(
-            id = 0,
-            status = StatusCommande.EN_ATTENTE_DE_VALIDATION,
-            cliend_id = user_id,
+//            id = 0,
+//            status = StatusCommande.EN_ATTENTE_DE_VALIDATION,
+//            cliend_id = user_id,
             produits = mutableListOf(produit),
-            date = Date()
+//            date = Date()
         )
 
         currentPanier.add(newCommande)
@@ -190,8 +182,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun postCommande(commandeRequest: CommandeRequest){
         viewModelScope.launch {
             try {
-                var commandeRequestSend = commandeRequest
-                commandeRequestSend.cliend_id = store.retrieveFromPreferences("email","")
+//                var commandeRequestSend = commandeRequest
+//                commandeRequestSend.cliend_id = store.retrieveFromPreferences("email","")
                 val response = apiService.passerCommande(commandeRequest)
                 Log.d("POST::/api/client/commander", response.toString())
                 getCommandes()

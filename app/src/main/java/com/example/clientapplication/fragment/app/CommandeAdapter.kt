@@ -52,9 +52,11 @@ class CommandeAdapter(
         }
         holder.commande_status_color.setBackgroundColor(ContextCompat.getColor(context, backgroundColor))
 
-        holder.commande_date.text = commandes.commandes?.get(position)?.date?.let { date ->
-            dateFormat.format(date).toString()
-        } ?: ""
+//        holder.commande_date = commandes.commandes?[position].date
+
+//        holder.commande_date.text = commandes.commandes?.get(position)?.date?.let { date ->
+//            dateFormat.format(date).toString()
+//        } ?: ""
 
         var sommeQuantites = 0
         commandes.commandes?.get(position)?.produits?.forEach { produit ->

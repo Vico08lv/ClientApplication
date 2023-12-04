@@ -15,6 +15,7 @@ import com.example.clientapplication.AppViewModel
 import com.example.clientapplication.R
 import com.example.clientapplication.databinding.FragmentCartBinding
 import com.example.clientapplication.model.request.CommandeRequest
+import com.example.clientapplication.model.request.ProduitQuantiteRequest
 
 
 class CartFragment : Fragment() {
@@ -59,10 +60,18 @@ class CartFragment : Fragment() {
 
         toutCommanderButton.setOnClickListener {
             val panier = appViewModel.getPanier()
-            panier?.forEach { commande ->
-                Log.i("Commande","$commande")
-                appViewModel.postCommande(commande)
+
+            val send: List<ProduitQuantiteRequest> = listOf()
+
+            panier?.forEach { element->
+                send.plus(element.produits)
             }
+            appViewModel.postCommande(CommandeRequest(send))
+
+//            panier?.forEach { commande ->
+//                Log.i("Commande","$commande")
+//                appViewModel.postCommande(commande)
+//            }
             appViewModel.clearPanier()
         }
 
