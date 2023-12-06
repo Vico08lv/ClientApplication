@@ -1,6 +1,7 @@
 package com.example.clientapplication.fragment.app
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +15,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.clientapplication.AppViewModel
+import com.example.clientapplication.MainActivity
 import com.example.clientapplication.R
+import com.example.clientapplication.SecondActivity
 import com.example.clientapplication.databinding.FragmentProfileBinding
+import com.example.clientapplication.localStorage.Storage
 import com.example.clientapplication.model.request.ClientRequest
 
 
@@ -24,6 +28,7 @@ class ProfileFragment: Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var appViewModel: AppViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -67,6 +72,7 @@ class ProfileFragment: Fragment() {
                 dialog.dismiss()
             }
 
+
             // Réglage des paramètres de la fenêtre du dialog
             val window = dialog.window
             val layoutParams = window?.attributes
@@ -78,8 +84,19 @@ class ProfileFragment: Fragment() {
             dialog.show()
         }
 
+        val deconnexionButton = root.findViewById<Button>(R.id.deconnexion)
+        deconnexionButton.setOnClickListener {
 
-        return root
+            var store : Storage? = context?.let { it1 -> Storage(it1) }
+            if (store != null) {
+                store.clear()
+            }
+            startActivity(Intent(requireActivity(), MainActivity::class.java))
+            requireActivity().finish()
+        }
+
+
+            return root
     }
 
     override fun onDestroyView() {

@@ -65,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bouton_vert0"
                 android:text="Tout commander"
+                android:layout_marginRight="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -73,19 +74,18 @@
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="370dp"
-        android:layout_height="1dp"
-        android:background="@color/vert0"
-        app:layout_constraintBottom_toTopOf="@+id/reclycleView_cart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <View-->
+<!--        android:layout_width="370dp"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="@color/vert0"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/reclycleView_cart"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reclycleView_cart"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutFilters">

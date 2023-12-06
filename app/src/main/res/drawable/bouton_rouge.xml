@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <solid android:color="@color/md_theme_light_error" /> <!-- Couleur de fond -->
+    <solid android:color="@color/status_refus" /> <!-- Couleur de fond -->
 
     <corners android:radius="20dp" /> <!-- Rayon des coins arrondis en dp -->
 

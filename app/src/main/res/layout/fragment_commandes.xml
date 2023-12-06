@@ -57,19 +57,18 @@
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="370dp"
-        android:layout_height="1dp"
-        android:background="@color/vert0"
-        app:layout_constraintBottom_toTopOf="@+id/reclycleView_commandes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <View-->
+<!--        android:layout_width="370dp"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="@color/vert0"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/reclycleView_commandes"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reclycleView_commandes"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutFilters">
