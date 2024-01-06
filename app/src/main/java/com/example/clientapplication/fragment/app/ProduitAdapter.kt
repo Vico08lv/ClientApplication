@@ -107,6 +107,7 @@ class ProduitAdapter(
             product.emailProducteur?.let { it1 -> appViewModel.addToCart(produitQuantite) }
 //            product.emailProducteur?.let { it1 -> appViewModel.addToCart(produitQuantite, it1) }
 
+            dialog.hide()
         }
 
 

@@ -39,7 +39,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="12dp"
                 android:gravity="left|center_vertical"
-                android:text="Mes commandes"
+                android:text="@string/mes_commandes"
                 android:textColor="@color/noirText"
                 android:textSize="30dp"
                 android:textStyle="bold" />

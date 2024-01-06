@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Client App</string>
+    <string name="commande_n">Command n°</string>
+    <string name="date_de_la_commande">Command date:</string>
+    <string name="produits_achetes">Products</string>
+    <string name="vendu_par">Sold by:</string>
+    <string name="ajouter_au_panier">Add to cart</string>
+    <string name="modifier_le_profil">Modify profile</string>
+    <string name="nom">Name</string>
+    <string name="prenom">Surname</string>
+    <string name="adresse">Adress</string>
+    <string name="telephone">Phone</string>
+    <string name="enregistrer">Save</string>
+    <string name="mon_panier">My Cart</string>
+    <string name="tout_commander">Command everything</string>
+    <string name="mes_commandes">My commands</string>
+    <string name="se_connecter">Login</string>
+    <string name="connexion">Login</string>
+    <string name="mot_de_passe">Password</string>
+    <string name="email">Mail</string>
+    <string name="pas_de_compte">No account? register here</string>
+    <string name="mon_profil">My Profile</string>
+    <string name="deconnexion">Disconnect</string>
+    <string name="filtres">Filters</string>
+    <string name="legume">Vegetable</string>
+    <string name="fruit">Fruit</string>
+    <string name="viande">Meat</string>
+    <string name="poisson">Fish</string>
+    <string name="miel">Honey</string>
+    <string name="autres">Other</string>
+    <string name="inscrire">Register</string>
+</resources>

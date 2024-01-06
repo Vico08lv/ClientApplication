@@ -1,4 +1,34 @@
 <resources>
     <string name="app_name">Client App</string>
+    <string name="commande_n">Commande n°</string>
+    <string name="date_de_la_commande">Date de la commande :</string>
+    <string name="produits_achetes">Produits achetés</string>
+    <string name="vendu_par">Vendu par :</string>
+    <string name="ajouter_au_panier">Ajouter au panier</string>
+    <string name="modifier_le_profil">Modifier le profil</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prénom</string>
+    <string name="adresse">Adresse</string>
+    <string name="telephone">Téléphone</string>
+    <string name="enregistrer">Enregistrer</string>
+    <string name="mon_panier">Mon panier</string>
+    <string name="tout_commander">Tout commander</string>
+    <string name="mes_commandes">Mes commandes</string>
+    <string name="se_connecter">Se connecter</string>
+    <string name="connexion">" Connexion "</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="email">Email</string>
+    <string name="pas_de_compte">Pas de compte ? Inscrivez-vous</string>
+    <string name="mon_profil">Mon profil</string>
+    <string name="deconnexion">Deconnexion</string>
+    <string name="filtres">Filtres</string>
+    <string name="legume">Légume</string>
+    <string name="fruit">Fruit</string>
+    <string name="viande">Viande</string>
+    <string name="poisson">Poisson</string>
+    <string name="miel">Miel</string>
+    <string name="autres">Autres</string>
+    <string name="inscrire">S\'inscrire</string>
+    <string name="deja_un_compte">J’ai déjà un compte</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

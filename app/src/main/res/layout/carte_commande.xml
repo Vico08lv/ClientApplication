@@ -47,7 +47,7 @@
                             android:id="@+id/commande_id_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Commande n°"
+                            android:text="@string/commande_n"
                             android:textAppearance="?attr/textAppearanceTitleMedium"
                             app:layout_constraintStart_toStartOf="parent" />
 
@@ -89,7 +89,7 @@
                         android:id="@+id/commande_date_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date de la commande :"
+                        android:text="@string/date_de_la_commande"
                         android:textAppearance="?attr/textAppearanceTitleMedium"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -120,7 +120,7 @@
                         android:id="@+id/commande_quantite_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Produits achetés"
+                        android:text="@string/produits_achetes"
                         app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView

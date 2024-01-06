@@ -51,6 +51,33 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     // Si sur le thread principal
     fun setProduits(c: List<ProduitResponse>) { _produits.value = c }
 
+    /** Recherche **/
+    //element recherché via la searchBar
+    val searchBarContent = MutableLiveData<String>()
+    fun updateSearchBarContent(content: String) {
+        searchBarContent.value = content
+    }
+
+    /** FILTRES **/
+    // Liste pour stocker les chips sélectionnés
+    private val _selectedChips = MutableLiveData<List<String>>(listOf()) // Initialise avec une liste vide
+    val selectedChips: LiveData<List<String>> = _selectedChips
+
+    // Méthode pour ajouter un filtre à la liste des filtres
+    fun addChip(chip: String) {
+        val currentList = _selectedChips.value ?: mutableListOf()
+        val newList = ArrayList(currentList)
+        newList.add(chip)
+        _selectedChips.value = newList
+    }
+
+    // Méthode pour supprimer un filtre de la liste des filtres
+    fun removeChip(chip: String) {
+        val currentList = _selectedChips.value ?: mutableListOf()
+        val newList = ArrayList(currentList)
+        newList.remove(chip)
+        _selectedChips.value = newList
+    }
 
     /** CART **/
     private val _panier = MutableLiveData<List<CommandeRequest>>()

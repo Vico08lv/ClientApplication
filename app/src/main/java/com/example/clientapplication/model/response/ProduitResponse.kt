@@ -10,5 +10,6 @@ data class ProduitResponse(
     val quantite : Int?,
     val emailProducteur : String?,
     val date_publication : String?,
-    val categorie : CategorieProduit?
+    val categorie : CategorieProduit?,
+    val delete : Boolean?
 )

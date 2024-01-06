@@ -39,7 +39,7 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="12dp"
                 android:gravity="left|center_vertical"
-                android:text="Mon panier"
+                android:text="@string/mon_panier"
                 android:textColor="@color/noirText"
                 android:textSize="30dp"
                 android:textStyle="bold" />
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bouton_vert0"
-                android:text="Tout commander"
+                android:text="@string/tout_commander"
                 android:layout_marginRight="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

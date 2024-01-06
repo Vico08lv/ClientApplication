@@ -101,7 +101,7 @@
                 android:id="@+id/dialog_produit_venduPar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vendu par :" />
+                android:text="@string/vendu_par" />
 
             <TextView
                 android:id="@+id/dialog_produit_producteur"
@@ -154,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity=""
-                    android:text="Ajouter au panier"
+                    android:text="@string/ajouter_au_panier"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

@@ -70,7 +70,7 @@
                 android:id="@+id/chipTV"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Filtres"
+                android:text="@string/filtres"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:layout_marginLeft="16dp"
@@ -104,52 +104,52 @@
                     app:singleLine="true">
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_1"
+                        android:id="@+id/chip_legume"
                         style="@style/Widget.Material3.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="Légume" />
+                        android:text="@string/legume" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_2"
+                        android:id="@+id/chip_fruit"
                         style="@style/Widget.Material3.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="Fruit" />
+                        android:text="@string/fruit" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_3"
+                        android:id="@+id/chip_viande"
                         style="@style/Widget.Material3.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="Viande" />
+                        android:text="@string/viande" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_4"
+                        android:id="@+id/chip_poisson"
                         style="@style/Widget.Material3.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="Poisson" />
+                        android:text="@string/poisson" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_5"
+                        android:id="@+id/chip_miel"
                         style="@style/Widget.Material3.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="Miel" />
+                        android:text="@string/miel" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_6"
+                        android:id="@+id/chip_autre"
                         style="@style/Widget.Material3.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="Autres" />
+                        android:text="@string/autres" />
 
                 </com.google.android.material.chip.ChipGroup>
 
@@ -173,8 +173,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintTop_toBottomOf="@id/layoutFilters"
         app:layout_constraintBottom_toTopOf="@id/bottom_guideline"

@@ -44,7 +44,7 @@
                 android:shadowDx="5"
                 android:shadowDy="5"
                 android:shadowRadius="5"
-                android:text="S'inscrire"
+                android:text="@string/inscrire"
                 android:textColor="@color/white"
                 android:textSize="50dp" />
 
@@ -68,89 +68,158 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/registrationUserRL"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:background="@drawable/saisie_marron"-->
+<!--                android:gravity="center"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/registrationEmailRL"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/registrationUserEditText"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:hint="@string/nom"-->
+<!--                    android:shadowColor="#474646"-->
+<!--                    android:shadowDx="5"-->
+<!--                    android:shadowDy="5"-->
+<!--                    android:shadowRadius="5"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textColorHint="@color/white"-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginRight="16dp"/>-->
+
+<!--            </RelativeLayout>-->
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/registrationUserRL"
+                style="?attr/textInputFilledStyle"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/saisie_marron"
-                android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@+id/registrationEmailRL"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:hint="@string/nom"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/registrationUserEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Nom"
-                    android:shadowColor="#474646"
-                    android:shadowDx="5"
-                    android:shadowDy="5"
-                    android:shadowRadius="5"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"/>
+                    android:layout_height="wrap_content"
+                    android:maxLength="50"
+                    android:maxLines="1" />
 
-            </RelativeLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <RelativeLayout
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/registrationEmailRL"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:background="@drawable/saisie_marron"-->
+<!--                android:gravity="center"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/registrationMDPRL"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/registrationUserRL">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/registrationEmailEditText"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:hint="@string/email"-->
+<!--                    android:shadowColor="#474646"-->
+<!--                    android:shadowDx="5"-->
+<!--                    android:shadowDy="5"-->
+<!--                    android:shadowRadius="5"-->
+<!--                    android:textColorHint="@color/white"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginRight="16dp"/>-->
+
+<!--            </RelativeLayout>-->
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/registrationEmailRL"
+                style="?attr/textInputFilledStyle"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/saisie_marron"
-                android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@+id/registrationMDPRL"
+                android:hint="@string/email"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
                 app:layout_constraintTop_toBottomOf="@+id/registrationUserRL">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/registrationEmailEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Email"
-                    android:shadowColor="#474646"
-                    android:shadowDx="5"
-                    android:shadowDy="5"
-                    android:shadowRadius="5"
-                    android:textColorHint="@color/white"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"/>
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="50"
+                    android:maxLines="1" />
 
-            </RelativeLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <RelativeLayout
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/registrationMDPRL"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:background="@drawable/saisie_marron"-->
+<!--                android:gravity="center"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/buttonRegistrationRL"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/registrationEmailRL">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/registrationMDPEditText"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:hint="@string/mot_de_passe"-->
+<!--                    android:inputType="textPassword"-->
+<!--                    android:shadowColor="#474646"-->
+<!--                    android:shadowDx="5"-->
+<!--                    android:shadowDy="5"-->
+<!--                    android:shadowRadius="5"-->
+<!--                    android:textColorHint="@color/white"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:layout_marginLeft="16dp"-->
+<!--                    android:layout_marginRight="16dp"/>-->
+
+<!--            </RelativeLayout>-->
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/registrationMDPRL"
+                style="?attr/textInputFilledStyle"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/saisie_marron"
-                android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@+id/buttonRegistrationRL"
+                android:hint="@string/mot_de_passe"
+                app:endIconMode="password_toggle"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
                 app:layout_constraintTop_toBottomOf="@+id/registrationEmailRL">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/registrationMDPEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Mot de passe"
+                    android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:shadowColor="#474646"
-                    android:shadowDx="5"
-                    android:shadowDy="5"
-                    android:shadowRadius="5"
-                    android:textColorHint="@color/white"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"/>
+                    android:maxLength="50"
+                    android:maxLines="1" />
 
-            </RelativeLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <RelativeLayout
@@ -173,7 +242,7 @@
                     android:shadowDx="5"
                     android:shadowDy="5"
                     android:shadowRadius="5"
-                    android:text=" S'inscrire "
+                    android:text="@string/inscrire"
                     android:textColor="@color/white"
                     android:textSize="34sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -189,7 +258,7 @@
                     android:shadowDx="5"
                     android:shadowDy="5"
                     android:shadowRadius="5"
-                    android:text="J’ai déjà un compte"
+                    android:text="@string/deja_un_compte"
                     android:textColor="@color/white"
                     android:layout_marginTop="100dp"/>
 
