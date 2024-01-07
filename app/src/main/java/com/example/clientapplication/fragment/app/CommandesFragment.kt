@@ -39,7 +39,7 @@ class CommandesFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         commandeRecyclerView.layoutManager = layoutManager
         val emptyCommandes = CommandesResponse(0, emptyList())
-        adapter = CommandeAdapter(emptyCommandes, requireContext())
+        adapter = CommandeAdapter(emptyCommandes, requireContext(), appViewModel)
         commandeRecyclerView.adapter = adapter
 
         appViewModel.commandes.observe(viewLifecycleOwner, Observer { commandes ->

@@ -18,6 +18,7 @@ import com.example.clientapplication.room.AppDatabase
 import com.example.clientapplication.room.dao.CommandeDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {
@@ -25,8 +26,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var store : Storage
 
     private val commandeDao: CommandeDao // Initialise ou injecte ton DAO ici
+    private val database = AppDatabase.getInstance(application)
     init {
-        val database = AppDatabase.getInstance(application)
         commandeDao = database.commandeDao()
     }
 
@@ -141,20 +142,32 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun getCommandes() {
         viewModelScope.launch {
             try {
-                val response = apiService.afficherCommandes()
-                response.commandes?.let { commandesList ->
-                    val commandesResponse = CommandesResponse(commandes = commandesList)
-                    updateCommandes(commandesResponse)
+                val commandes = withContext(Dispatchers.IO) {
+                    // Récupérer les commandes depuis la base de données locale
+//                    database.clearAllData()
+                    database.commandeDao().getAllCommandes()
                 }
-                Log.d("GET:/api/client/commandes", response.toString())
+
+                commandes?.let { localCommandes ->
+                    updateCommandes(localCommandes) // Mettre à jour l'UI avec les commandes locales
+
+                    // Récupérer les dernières commandes depuis l'API
+                    val response = apiService.afficherCommandes()
+                    response.commandes?.let { latestCommandesList ->
+                        val latestCommandesResponse = CommandesResponse(commandes = latestCommandesList)
+                        updateCommandes(latestCommandesResponse) // Mettre à jour l'UI avec les dernières commandes de l'API
+                    }
+                    Log.d("GET:/api/client/commandes", response.toString())
+                }
             } catch (e: Exception) {
                 Log.e("GET:/api/client/commandes", e.message.toString())
                 store.clear()
                 _navigationEvent.value = NavigationEvent.LaunchNewActivity
-
             }
         }
     }
+
+
     /** RECUPERER LE PROFIL DE L'UTILISATEUR **/
     fun getClient() {
         viewModelScope.launch {

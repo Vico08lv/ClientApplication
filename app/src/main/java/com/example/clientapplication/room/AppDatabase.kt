@@ -15,6 +15,9 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun commandeDao(): CommandeDao
 
+    fun clearAllData() {
+        INSTANCE?.clearAllTables()
+    }
     companion object {
         // Singleton pour éviter la création multiple de la base de données
         @Volatile

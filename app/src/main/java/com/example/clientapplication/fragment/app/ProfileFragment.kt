@@ -91,6 +91,7 @@ class ProfileFragment: Fragment() {
             if (store != null) {
                 store.clear()
             }
+
             startActivity(Intent(requireActivity(), MainActivity::class.java))
             requireActivity().finish()
         }

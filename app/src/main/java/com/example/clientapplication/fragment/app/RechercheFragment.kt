@@ -82,13 +82,13 @@ class RechercheFragment : Fragment() {
 
         /** Filtrage **/
 
-        //Initialisation des filtres cochés
-        appViewModel.addChip("LEGUME")
-        appViewModel.addChip("FRUIT")
-        appViewModel.addChip("VIANDE")
-        appViewModel.addChip("POISSON")
-        appViewModel.addChip("MIEL")
-        appViewModel.addChip("AUTRES")
+//        //Initialisation des filtres cochés
+//        appViewModel.addChip("LEGUME")
+//        appViewModel.addChip("FRUIT")
+//        appViewModel.addChip("VIANDE")
+//        appViewModel.addChip("POISSON")
+//        appViewModel.addChip("MIEL")
+//        appViewModel.addChip("AUTRES")
 
         val chipLegume = rootView.findViewById<Chip>(R.id.chip_legume)
         val chipFruit = rootView.findViewById<Chip>(R.id.chip_fruit)
