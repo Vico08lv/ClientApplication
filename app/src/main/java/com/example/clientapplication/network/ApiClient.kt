@@ -1,6 +1,5 @@
 package com.example.clientapplication.network
 
-
 import android.content.Context
 import com.example.clientapplication.localStorage.Storage
 import com.squareup.moshi.Moshi
@@ -11,9 +10,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 class ApiClient(private val context: Context) {
-
-    private val BASE_URL = "https://d09d-2a01-cb1d-8142-ef00-7dd5-5b3c-56c5-6b5c.ngrok-free.app"
-
+    private val BASE_URL = "https://6faf-2a01-cb1d-8142-ef00-7dd5-5b3c-56c5-6b5c.ngrok-free.app/"
 
 
     private val retrofit: Retrofit by lazy {
