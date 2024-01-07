@@ -103,7 +103,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/produit_producteur"
+                    android:id="@+id/produit_producteur_commande"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="email@producteur"

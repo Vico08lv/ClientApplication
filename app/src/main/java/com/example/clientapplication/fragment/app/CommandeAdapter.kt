@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.clientapplication.AppViewModel
 import com.example.clientapplication.R
 import com.example.clientapplication.model.StatusCommande
 import com.example.clientapplication.model.response.CommandeResponse
@@ -18,7 +19,9 @@ import java.util.Locale
 
 class CommandeAdapter(
     var commandes: CommandesResponse,
-    var context: Context
+    var context: Context,
+    private var appViewModel : AppViewModel
+
 ) : RecyclerView.Adapter<CommandeAdapter.CommandesViewHolder>() {
 
     class CommandesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -27,6 +30,7 @@ class CommandeAdapter(
         var commande_date: TextView = itemView.findViewById(R.id.commande_date)
         var commande_quantite: TextView = itemView.findViewById(R.id.commande_quantite)
         var commande_status_color : LinearLayout = itemView.findViewById(R.id.statusCommandeColor)
+        var produit_producteur : TextView = itemView.findViewById(R.id.produit_producteur_commande)
 //        var commande_produits: TextView = itemView.findViewById(R.id.commande_produits)
 
     }
@@ -38,10 +42,10 @@ class CommandeAdapter(
     }
 
     override fun onBindViewHolder(holder: CommandesViewHolder, position: Int) {
-        val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
 
         holder.commande_id.text = commandes.commandes?.get(position)?.id.toString()
         holder.commande_status.text = commandes.commandes?.get(position)?.status.toString()
+        holder.commande_date.text = commandes.commandes?.get(position)?.date.toString()
 
         val status = commandes.commandes?.get(position)?.status
         val backgroundColor = when (status) {
@@ -52,18 +56,18 @@ class CommandeAdapter(
         }
         holder.commande_status_color.setBackgroundColor(ContextCompat.getColor(context, backgroundColor))
 
-//        holder.commande_date = commandes.commandes?[position].date
-
-//        holder.commande_date.text = commandes.commandes?.get(position)?.date?.let { date ->
-//            dateFormat.format(date).toString()
-//        } ?: ""
-
         var sommeQuantites = 0
         commandes.commandes?.get(position)?.produits?.forEach { produit ->
             produit.quantite?.let { q ->
                 sommeQuantites += q
             }
         }
+
+        //recuperer le producteur avec l'id du produit de la commande
+        val produitId = commandes.commandes?.get(position)?.produits?.get(0)?.id
+        val produitsList = appViewModel.produits.value
+        val emailProducteur = produitsList?.find{it.id == produitId}?.emailProducteur
+        holder.produit_producteur.text = emailProducteur.toString()
 
         holder.commande_quantite.text = sommeQuantites.toString()
 //        holder.commande_produits.text = commandes[position].produits dois boucler BOUTON POUR AFFICHER DETAIL COMMANDE
