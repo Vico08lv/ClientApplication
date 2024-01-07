@@ -1,7 +1,13 @@
 package com.example.clientapplication.fragment.auth
 
 
+import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +15,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -19,6 +27,8 @@ import com.example.clientapplication.databinding.FragmentLoginBinding
 import com.example.clientapplication.localStorage.Storage
 import com.example.clientapplication.model.request.AuthenticationRequest
 import com.google.firebase.messaging.FirebaseMessaging
+import java.io.IOException
+import java.util.Locale
 
 
 class LoginFragment : Fragment() {
@@ -27,6 +37,9 @@ class LoginFragment : Fragment() {
     private lateinit var connexionVM: LoginViewModel
     private var token: String = ""
     private lateinit var store : Storage
+
+    val PERMISSION_REQUEST_CODE = 0
+
 
 
     override fun onCreateView(
@@ -89,6 +102,9 @@ class LoginFragment : Fragment() {
             }
         }
 
+        displayCountryName(root)
+
+
 
         return root
     }
@@ -98,6 +114,42 @@ class LoginFragment : Fragment() {
         _binding = null
     }
 
+
+    private fun displayCountryName(root : View) {
+        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val geocoder = Geocoder(requireContext(), Locale.getDefault())
+
+        val hasFineLocationPermission = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+
+        if (!hasFineLocationPermission) {
+            // Demander la permission d'accès à la localisation si elle n'est pas accordée
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                PERMISSION_REQUEST_CODE
+            )
+            return
+        }
+
+        locationManager.allProviders.forEach { provider ->
+            val location: Location? = locationManager.getLastKnownLocation(provider)
+            location?.let {
+                try {
+                    val addresses = geocoder.getFromLocation(it.latitude, it.longitude, 1)
+                    if (addresses != null && addresses.isNotEmpty()) {
+                        val countryName = addresses[0].countryName
+                        root.findViewById<TextView>(R.id.paysloc).text = countryName
+                        return@forEach
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
 
 
 }

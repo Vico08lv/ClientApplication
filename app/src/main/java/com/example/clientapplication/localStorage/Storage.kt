@@ -12,7 +12,10 @@ import com.example.clientapplication.model.response.ClientResponse
 import com.example.clientapplication.model.response.ProduitQuantiteResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
 import java.time.Instant
+import java.util.Base64
 import java.util.Date
 import java.util.Random
 import java.util.UUID
@@ -74,6 +77,46 @@ class Storage(private val context: Context) {
         return storage.getProfil().email ?: ""
     }
 
+    fun isExpired() : Boolean
+    {
+        val currentTimeSeconds = System.currentTimeMillis() / 1000 // Temps actuel en secondes
+        if (currentTimeSeconds > decodeToken().toDouble().toLong()) {
+            Log.d("EXPIRED", true.toString())
+            return true;
+        } else {
+            println("Le token est valide.")
+            Log.d("EXPIRED", false.toString())
+            return false;
+        }
 
+    }
+
+    fun decodeToken(): String {
+        val jwt = getToken()
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return "Requires SDK 26"
+        val parts = jwt.split(".")
+        return try {
+            val charset = charset("UTF-8")
+            val header = String(Base64.getUrlDecoder().decode(parts[0].toByteArray(charset)), charset)
+            val payload = String(Base64.getUrlDecoder().decode(parts[1].toByteArray(charset)), charset)
+
+            "${parsePayloadToMap(payload)["exp"]}"
+        } catch (e: Exception) {
+            "Error parsing JWT: $e"
+        }
+    }
+
+    fun parsePayloadToMap(payloadString: String): Map<String, Any> {
+        val moshi = Moshi.Builder().build()
+        val jsonAdapter: JsonAdapter<Map<*, *>>? = moshi.adapter(
+            Map::class.java
+        )
+
+        return try {
+            jsonAdapter?.fromJson(payloadString) as Map<String, Any>? ?: emptyMap()
+        } catch (e: Exception) {
+            emptyMap() // Si la conversion échoue, renvoyer une carte vide
+        }
+    }
 
 }

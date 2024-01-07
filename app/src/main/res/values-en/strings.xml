@@ -30,4 +30,6 @@
     <string name="miel">Honey</string>
     <string name="autres">Other</string>
     <string name="inscrire">Register</string>
+    <string name="deja_un_compte">I already have an account</string>
+    <string name="pays">Country:</string>
 </resources>

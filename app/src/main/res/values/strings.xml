@@ -30,5 +30,6 @@
     <string name="autres">Autres</string>
     <string name="inscrire">S\'inscrire</string>
     <string name="deja_un_compte">J’ai déjà un compte</string>
+    <string name="pays">Pays :</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

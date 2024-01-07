@@ -1,13 +1,15 @@
 package com.example.clientapplication.model.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.clientapplication.model.StatusCommande
-import java.util.Date
 
+@Entity(tableName = "commande")
 data class CommandeResponse(
-
-    val id: Long?,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
     val status: StatusCommande?,
-    val client_id: String?,
+    val clientId: String?,
     val produits: List<ProduitQuantiteResponse>?,
     val date: String?
 )

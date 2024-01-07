@@ -7,7 +7,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.clientapplication.localStorage.Storage
-import com.example.clientapplication.model.StatusCommande
 import com.example.clientapplication.model.request.ClientRequest
 import com.example.clientapplication.model.request.CommandeRequest
 import com.example.clientapplication.model.request.ProduitQuantiteRequest
@@ -15,13 +14,21 @@ import com.example.clientapplication.model.response.ClientResponse
 import com.example.clientapplication.model.response.CommandesResponse
 import com.example.clientapplication.model.response.ProduitResponse
 import com.example.clientapplication.network.ApiClient
+import com.example.clientapplication.room.AppDatabase
+import com.example.clientapplication.room.dao.CommandeDao
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.Date
 
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     private lateinit var store : Storage
+
+    private val commandeDao: CommandeDao // Initialise ou injecte ton DAO ici
+    init {
+        val database = AppDatabase.getInstance(application)
+        commandeDao = database.commandeDao()
+    }
 
     private val _navigationEvent = MutableLiveData<NavigationEvent>()
     val navigationEvent: LiveData<NavigationEvent> = _navigationEvent
@@ -43,6 +50,13 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     // Si sur le thread principal
     fun setCommandes(c: CommandesResponse) { _commandes.value = c }
 
+
+    // Méthode pour insérer une commande dans la base de données Room
+    fun insertCommande(commandes: CommandesResponse) {
+        viewModelScope.launch(Dispatchers.IO) {
+            commandeDao.insertCommande(commandes)
+        }
+    }
 
     /** PRODUITS **/
     private val _produits = MutableLiveData<List<ProduitResponse>>()

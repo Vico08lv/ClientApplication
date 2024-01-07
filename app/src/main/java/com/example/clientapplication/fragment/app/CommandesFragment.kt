@@ -1,7 +1,6 @@
 package com.example.clientapplication.fragment.app
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,17 +38,20 @@ class CommandesFragment : Fragment() {
         val commandeRecyclerView = root.findViewById<RecyclerView>(R.id.reclycleView_commandes)
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         commandeRecyclerView.layoutManager = layoutManager
-        val emptyCommandes = CommandesResponse(emptyList())
+        val emptyCommandes = CommandesResponse(0, emptyList())
         adapter = CommandeAdapter(emptyCommandes, requireContext())
         commandeRecyclerView.adapter = adapter
 
         appViewModel.commandes.observe(viewLifecycleOwner, Observer { commandes ->
             adapter.updateCommandes(commandes)
+
+            appViewModel.insertCommande(commandes)
         })
 
 
         return root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
